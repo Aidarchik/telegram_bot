@@ -19,7 +19,7 @@ const Form = () => {
         if (!sity || !country) {
             tg.MainButton.hide();
         } else { tg.MainButton.show(); }
-    }, [])
+    }, [sity, country])
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value);
