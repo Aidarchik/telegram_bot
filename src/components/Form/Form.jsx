@@ -16,7 +16,7 @@ const Form = () => {
         })
     }, []);
     useEffect(() => {
-        if (!street || !country) {
+        if (!sity || !country) {
             tg.MainButton.hide();
         } else { tg.MainButton.show(); }
     }, [])
