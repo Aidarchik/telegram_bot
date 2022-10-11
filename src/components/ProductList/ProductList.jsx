@@ -39,7 +39,7 @@ const ProductList = () => {
             headers: { 'Content-Type': 'application/json', },
             body: JSON.stringify(data),
         }).then((response) => tg.MainButton.setParams({
-            text: "Добро",
+            text: "Заработал",
         }));
     }, [addedItems]);
 
