@@ -24,6 +24,23 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const { tg, queryId } = useTelegram();
 
+    const onSend = () => {
+        const data = {
+            queryId,
+            products: addedItems,
+            totalPrice: getTotalPrice(addedItems),
+        };
+        try {
+            fetch('http://94.26.224.61:3000/web-data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', },
+                body: JSON.stringify(data),
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const onSendData = useCallback(() => {
         const data = {
             queryId,
@@ -83,7 +100,7 @@ const ProductList = () => {
                     className={'item'}
                 />
             ))}
-            <button onclick={onSendData}>Send</button>
+            <button onclick={onSend}>Send</button>
         </div>
     );
 };
