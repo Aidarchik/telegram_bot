@@ -35,7 +35,7 @@ const ProductList = () => {
             headers: { 'Content-Type': 'application/json', },
             body: JSON.stringify(data),
         });
-    }, []);
+    }, [queryId, addedItems]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
