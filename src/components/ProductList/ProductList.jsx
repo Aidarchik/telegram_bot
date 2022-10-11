@@ -44,7 +44,7 @@ const ProductList = () => {
             }));
         } catch (error) {
             tg.MainButton.setParams({
-                text: "Ошибка",
+                text: error.message,
             })
         }
 
