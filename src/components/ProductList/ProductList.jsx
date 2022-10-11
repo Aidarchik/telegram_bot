@@ -34,13 +34,20 @@ const ProductList = () => {
         tg.MainButton.setParams({
             text: "Добро",
         })
-        await fetch('http://94.26.224.61:3000/web-data', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', },
-            body: JSON.stringify(data),
-        }).then((response) => tg.MainButton.setParams({
-            text: "Заработал",
-        }));
+        try {
+            await fetch('http://94.26.224.61:3000/web-data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', },
+                body: JSON.stringify(data),
+            }).then((response) => tg.MainButton.setParams({
+                text: "Заработал",
+            }));
+        } catch (error) {
+            tg.MainButton.setParams({
+                text: "Ошибка",
+            })
+        }
+
     }, [addedItems]);
 
     useEffect(() => {
