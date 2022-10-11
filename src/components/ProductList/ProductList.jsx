@@ -24,13 +24,13 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const { tg, queryId } = useTelegram();
 
-    const onSendData = useCallback(() => {
+    const onSendData = useCallback(async () => {
         const data = {
             queryId,
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
         };
-        fetch('http://94.26.224.61:3000/web-data', {
+        await fetch('http://94.26.224.61:3000/web-data', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', },
             body: JSON.stringify(data),
