@@ -43,7 +43,7 @@ const ProductList = () => {
                 text: "Заработал",
             }));
         } catch (error) {
-            tg.sendData(JSON.stringify(error));
+            tg.sendData(error);
         }
 
     }, [addedItems]);
