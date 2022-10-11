@@ -30,19 +30,23 @@ const ProductList = () => {
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
         };
-        await fetch('http://94.26.224.61:3000/web-data', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', },
-            body: JSON.stringify(data),
-        }).then((response) => tg.MainButton.setParams({
+
+        tg.MainButton.setParams({
             text: "Добро",
-        }));
+        })
+        // await fetch('http://94.26.224.61:3000/web-data', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json', },
+        //     body: JSON.stringify(data),
+        // }).then((response) => tg.MainButton.setParams({
+        //     text: "Добро",
+        // }));
     }, [addedItems]);
 
     useEffect(() => {
-        tg.onEvent('mainButtonClick', onSendData);
+        tg.onEvent('mainButtonClicked', onSendData);
         return () => {
-            tg.offEvent('mainButtonClick', onSendData);
+            tg.offEvent('mainButtonClicked', onSendData);
         };
     }, [onSendData]);
 
