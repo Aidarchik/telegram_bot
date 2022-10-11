@@ -31,9 +31,6 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
         };
 
-        tg.MainButton.setParams({
-            text: "Добро",
-        })
         try {
             fetch('http://94.26.224.61:3000/web-data', {
                 method: 'POST',
@@ -41,7 +38,7 @@ const ProductList = () => {
                 body: JSON.stringify(data),
             });
         } catch (error) {
-            tg.sendData("error");
+            console.error(error);
         }
 
     }, [addedItems]);
@@ -86,6 +83,7 @@ const ProductList = () => {
                     className={'item'}
                 />
             ))}
+            <button onclick={onSendData}>Send</button>
         </div>
     );
 };
