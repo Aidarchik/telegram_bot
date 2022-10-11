@@ -43,9 +43,7 @@ const ProductList = () => {
                 text: "Заработал",
             }));
         } catch (error) {
-            tg.MainButton.setParams({
-                text: error,
-            })
+            tg.sendData(JSON.stringify(error));
         }
 
     }, [addedItems]);
