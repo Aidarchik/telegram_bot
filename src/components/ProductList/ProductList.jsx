@@ -29,14 +29,12 @@ const ProductList = () => {
             queryId,
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
-        }
-        fetch('http://94.26.224.61:8000/web-data', {
+        };
+        fetch('https://94.26.224.61:8000/web-data', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json', },
             body: JSON.stringify(data),
-        })
+        });
     }, []);
 
     useEffect(() => {
