@@ -24,23 +24,6 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const { tg, queryId } = useTelegram();
 
-    const onSend = async () => {
-        const data = {
-            queryId,
-            products: addedItems,
-            totalPrice: getTotalPrice(addedItems),
-        };
-        try {
-            await fetch('http://94.26.224.61:3000/web-data', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', },
-                body: JSON.stringify(data),
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     const onSendData = useCallback(() => {
         const data = {
             queryId,
@@ -55,7 +38,7 @@ const ProductList = () => {
                 body: JSON.stringify(data),
             });
         } catch (error) {
-            console.error(error);
+            console.log(error);
         }
 
     }, [addedItems]);
@@ -100,7 +83,6 @@ const ProductList = () => {
                     className={'item'}
                 />
             ))}
-            <button onclick={onSend}>Send</button>
         </div>
     );
 };
