@@ -25,13 +25,15 @@ const getTotalPrice = (items = []) => {
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const [errors, setErrors] = useState([]);
-    const [queryId, setQueryId] = useState(false);
+    const [queryId, setQueryId] = useState('');
     let { tg, query } = useTelegram();
 
     // queryId = 'AAGFPFBsAAAAAIU8UGwpt7GG';
     const urlBot = 'http://94.26.224.61:8000/web-data';
 
     useEffect(() => { setQueryId(query) }, []);
+
+    const onChangeId = (e) => { setQueryId(e.target.value) };
 
     const onSendData = useCallback(async () => {
         const data = {
@@ -89,6 +91,11 @@ const ProductList = () => {
     return (
         <div className={'list'}>
             <button onClick={onSendData}>Send</button><br />
+            <input
+                type="text"
+                placeholder={'queryId'}
+                onChange={onChangeId}
+            />
             {errors.message}<br />
             {console.log(errors)}<br />
             {queryId}<br />
