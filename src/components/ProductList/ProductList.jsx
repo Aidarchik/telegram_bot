@@ -47,7 +47,7 @@ const ProductList = () => {
         } catch (error) {
             tg.MainButton.setParams(
                 {
-                    text: join(error),
+                    text: error.join(),
                 })
         }
 
