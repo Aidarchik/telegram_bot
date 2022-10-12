@@ -26,16 +26,18 @@ const ProductList = () => {
 
     const onSendData = useCallback(() => {
         const data = {
-            queryId,
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
+            queryId,
         };
+
+        const test = { queryId }
 
         try {
             fetch('http://94.26.224.61:3000/web-data', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
-                body: JSON.stringify(data),
+                body: JSON.stringify(test),
             });
         } catch (error) {
             console.log(error);
