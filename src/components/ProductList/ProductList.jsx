@@ -39,7 +39,7 @@ const ProductList = () => {
             fetch(urlBot, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
-                body: JSON.stringify(data),
+                // body: JSON.stringify(data),
             });
         } catch (error) {
             console.log(error);
