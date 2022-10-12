@@ -20,7 +20,7 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const urlBot = 'http://94.26.224.61:3000/web-data';
+const urlBot = 'http://94.26.224.61:8000/web-data';
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
