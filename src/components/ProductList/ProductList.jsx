@@ -34,15 +34,22 @@ const ProductList = () => {
             queryId,
         };
 
-        await fetch(urlBot, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json;charset=utf-8', },
-            body: JSON.stringify(data),
-        }).then(response => tg.MainButton.setParams(
-            {
-                text: response.status,
-            }
-        ));
+        try {
+            await fetch(urlBot, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', },
+                body: JSON.stringify(data),
+            }).then(response => tg.MainButton.setParams(
+                {
+                    text: "response.text",
+                }
+            ));
+        } catch (error) {
+            tg.MainButton.setParams(
+                {
+                    text: join(error),
+                })
+        }
 
     }, [addedItems]);
 
