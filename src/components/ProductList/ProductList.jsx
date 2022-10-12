@@ -83,7 +83,7 @@ const ProductList = () => {
 
     return (
         <div className={'list'}>
-            {errors.map(item => <div>{item.message}</div>)}
+            {errors.message}
             {queryId}
             {products.map(item => (
                 <ProductItem
