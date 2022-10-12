@@ -3,6 +3,7 @@ import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useState, useCallback, useEffect } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
+import axios from 'axios';
 
 const products = [
     { id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые' },
@@ -43,14 +44,21 @@ const ProductList = () => {
         };
 
         try {
-            await fetch(urlBot, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', },
-                body: JSON.stringify(data),
-            }).then(response => {
-                // tg.MainButton.setParams({ text: "response.text", })
-                setErrors(response)
+            await axios({
+                method: 'post',
+                url: urlBot,
+                data,
             });
+
+
+            // fetch(urlBot, {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json', },
+            //     body: JSON.stringify(data),
+            // }).then(response => {
+            //     // tg.MainButton.setParams({ text: "response.text", })
+            //     setErrors(response)
+            // });
         } catch (error) {
             setErrors(error);
         }
