@@ -45,10 +45,10 @@ const ProductList = () => {
                 }
             ));
         } catch (error) {
-            tg.MainButton.setParams(
-                {
-                    text: "Ошибка",
-                })
+            // tg.MainButton.setParams(
+            //     {
+            //         text: "Ошибка",
+            //     })
         }
 
     }, [addedItems]);
