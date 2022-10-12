@@ -3,7 +3,7 @@ import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useState, useCallback, useEffect } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
-import axios from 'axios';
+// import axios from 'axios';
 
 const products = [
     { id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые' },
