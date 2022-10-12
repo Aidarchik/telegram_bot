@@ -51,7 +51,7 @@ const ProductList = () => {
             // });
 
 
-            fetch(urlBot, {
+            await fetch(urlBot, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
                 body: JSON.stringify(data),
