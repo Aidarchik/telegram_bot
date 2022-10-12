@@ -83,9 +83,9 @@ const ProductList = () => {
 
     return (
         <div className={'list'}>
-            <button onClick={onSendData}>Send</button>
-            {errors.message}
-            {queryId}
+            <button onClick={onSendData}>Send</button><br />
+            {errors.message}<br />
+            {queryId}<br />
             {products.map(item => (
                 <ProductItem
                     key={item.id}
