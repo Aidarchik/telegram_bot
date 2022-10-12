@@ -94,6 +94,7 @@ const ProductList = () => {
             <input
                 type="text"
                 placeholder={'queryId'}
+                value={queryId}
                 onChange={onChangeId}
             />
             {errors.message}<br />
