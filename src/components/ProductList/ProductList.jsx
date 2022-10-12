@@ -40,7 +40,7 @@ const ProductList = () => {
                 body: JSON.stringify(data),
             }).then(response => tg.MainButton.setParams(
                 {
-                    text: response.text,
+                    text: "response.text",
                 }
             ));
         } catch (error) {
