@@ -24,6 +24,7 @@ const getTotalPrice = (items = []) => {
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
+    const [errors, setErrors] = useState([]);
     const { tg, queryId } = useTelegram();
     const urlBot = 'http://94.26.224.61:8000/web-data';
 
@@ -45,10 +46,7 @@ const ProductList = () => {
                 }
             ));
         } catch (error) {
-            tg.MainButton.setParams(
-                {
-                    text: error,
-                })
+            setErrors(error);
         }
 
     }, [addedItems]);
@@ -85,6 +83,7 @@ const ProductList = () => {
 
     return (
         <div className={'list'}>
+            {errors}
             {queryId}
             {products.map(item => (
                 <ProductItem
