@@ -44,11 +44,11 @@ const ProductList = () => {
         };
 
         try {
-            await axios({
-                method: 'post',
-                url: urlBot,
-                data: JSON.stringify(data),
-            });
+            // await axios({
+            //     method: 'post',
+            //     url: urlBot,
+            //     data: JSON.stringify(data),
+            // });
 
 
             fetch(urlBot, {
