@@ -25,7 +25,8 @@ const getTotalPrice = (items = []) => {
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const [errors, setErrors] = useState([]);
-    const { tg, queryId } = useTelegram();
+    let { tg, queryId } = useTelegram();
+    // queryId = 'AAGFPFBsAAAAAIU8UGwOCGQB';
     const urlBot = 'http://94.26.224.61:8000/web-data';
 
     const onSendData = useCallback(async () => {
@@ -40,11 +41,10 @@ const ProductList = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
                 body: JSON.stringify(data),
-            }).then(response => tg.MainButton.setParams(
-                {
-                    text: "response.text",
-                }
-            ));
+            }).then(response => {
+                tg.MainButton.setParams({ text: "response.text", })
+                setErrors(response.status)
+            });
         } catch (error) {
             setErrors(error);
         }
@@ -85,6 +85,7 @@ const ProductList = () => {
         <div className={'list'}>
             <button onClick={onSendData}>Send</button><br />
             {errors.message}<br />
+            {errors.statust}<br />
             {queryId}<br />
             {products.map(item => (
                 <ProductItem
