@@ -47,7 +47,7 @@ const ProductList = () => {
             await axios({
                 method: 'post',
                 url: urlBot,
-                data,
+                data: JSON.stringify(data),
             });
 
 
