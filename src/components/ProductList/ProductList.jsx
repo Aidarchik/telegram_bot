@@ -44,7 +44,10 @@ const ProductList = () => {
                 }
             ));
         } catch (error) {
-            console.log(error);
+            tg.MainButton.setParams(
+                {
+                    text: "Ошибка",
+                })
         }
 
     }, [addedItems]);
