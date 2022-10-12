@@ -51,14 +51,14 @@ const ProductList = () => {
             });
 
 
-            // fetch(urlBot, {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json', },
-            //     body: JSON.stringify(data),
-            // }).then(response => {
-            //     // tg.MainButton.setParams({ text: "response.text", })
-            //     setErrors(response)
-            // });
+            fetch(urlBot, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', },
+                body: JSON.stringify(data),
+            }).then(response => {
+                // tg.MainButton.setParams({ text: "response.text", })
+                setErrors(response)
+            });
         } catch (error) {
             setErrors(error);
         }
