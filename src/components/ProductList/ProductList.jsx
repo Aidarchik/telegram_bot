@@ -20,6 +20,8 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
+const urlBot = 'http://94.26.224.61:3000/web-data';
+
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const { tg, queryId } = useTelegram();
@@ -34,10 +36,10 @@ const ProductList = () => {
         const test = { queryId }
 
         try {
-            fetch('http://94.26.224.61:3000/web-data', {
+            fetch(urlBot, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
-                body: JSON.stringify(test),
+                body: JSON.stringify(data),
             });
         } catch (error) {
             console.log(error);
