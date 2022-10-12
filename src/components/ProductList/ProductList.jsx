@@ -27,7 +27,7 @@ const ProductList = () => {
     const { tg, queryId } = useTelegram();
     const urlBot = 'http://94.26.224.61:8000/web-data';
 
-    const onSendData = useCallback(() => {
+    const onSendData = useCallback(async () => {
         const data = {
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
@@ -35,7 +35,7 @@ const ProductList = () => {
         };
 
         try {
-            fetch(urlBot, {
+            await fetch(urlBot, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
                 body: JSON.stringify(data),
