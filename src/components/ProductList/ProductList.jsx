@@ -25,9 +25,13 @@ const getTotalPrice = (items = []) => {
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const [errors, setErrors] = useState([]);
-    let { tg, queryId } = useTelegram();
-    // queryId = 'AAGFPFBsAAAAAIU8UGwOCGQB';
+    const [queryId, setQueryId] = useState(false);
+    let { tg, query } = useTelegram();
+
+    // queryId = 'AAGFPFBsAAAAAIU8UGwpt7GG';
     const urlBot = 'http://94.26.224.61:8000/web-data';
+
+    useEffect(() => { setQueryId(query) }, []);
 
     const onSendData = useCallback(async () => {
         const data = {
@@ -42,14 +46,15 @@ const ProductList = () => {
                 headers: { 'Content-Type': 'application/json', },
                 body: JSON.stringify(data),
             }).then(response => {
-                tg.MainButton.setParams({ text: "response.text", })
-                setErrors(response.status)
+                // tg.MainButton.setParams({ text: "response.text", })
+                setErrors(response)
             });
         } catch (error) {
             setErrors(error);
         }
 
     }, [addedItems]);
+
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
@@ -85,7 +90,7 @@ const ProductList = () => {
         <div className={'list'}>
             <button onClick={onSendData}>Send</button><br />
             {errors.message}<br />
-            {errors.statust}<br />
+            {console.log(errors)}<br />
             {queryId}<br />
             {products.map(item => (
                 <ProductItem
