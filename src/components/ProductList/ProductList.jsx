@@ -54,7 +54,11 @@ const ProductList = () => {
             await fetch(urlBot, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
-                body: JSON.stringify(data),
+                body: {
+                    "queryId": "AAGFPFBsAAAAAIU8UGzu5zvW",
+                    "products": {},
+                    "totalPrice": "Вот это хрень"
+                },
             }).then(response => {
                 // tg.MainButton.setParams({ text: "response.text", })
                 setErrors(response)
