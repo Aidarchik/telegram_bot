@@ -20,11 +20,12 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const urlBot = 'http://94.26.224.61:8000/web-data';
+
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const { tg, queryId } = useTelegram();
+    const urlBot = 'http://94.26.224.61:8000/web-data';
 
     const onSendData = useCallback(() => {
         const data = {
