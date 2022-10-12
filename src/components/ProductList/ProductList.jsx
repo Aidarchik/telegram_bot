@@ -54,11 +54,7 @@ const ProductList = () => {
             await fetch('http://94.26.224.61:8000/web-data', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
-                body: {
-                    "queryId": query,
-                    "products": {},
-                    "totalPrice": "Вот это хрень"
-                },
+                body: JSON.stringify(data),
             }).then(response => {
                 // tg.MainButton.setParams({ text: "response.text", })
                 setErrors(response)
