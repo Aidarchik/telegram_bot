@@ -51,7 +51,7 @@ const ProductList = () => {
             // });
 
 
-            await fetch(urlBot, {
+            await fetch('http://94.26.224.61:8000/web-data', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
                 body: {
