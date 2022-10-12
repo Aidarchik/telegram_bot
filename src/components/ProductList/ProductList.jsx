@@ -83,7 +83,8 @@ const ProductList = () => {
 
     return (
         <div className={'list'}>
-            {JSON.stringify(errors)}
+            <button onClick={onSendData}>Send</button>
+            {errors.message}
             {queryId}
             {products.map(item => (
                 <ProductItem
