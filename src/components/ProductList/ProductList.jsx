@@ -55,7 +55,7 @@ const ProductList = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
                 body: {
-                    "queryId": "AAGFPFBsAAAAAIU8UGzu5zvW",
+                    "queryId": query,
                     "products": {},
                     "totalPrice": "Вот это хрень"
                 },
