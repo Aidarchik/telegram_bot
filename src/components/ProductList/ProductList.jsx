@@ -77,6 +77,7 @@ const ProductList = () => {
 
     return (
         <div className={'list'}>
+            {queryId}
             {products.map(item => (
                 <ProductItem
                     key={item.id}
