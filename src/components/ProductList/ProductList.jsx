@@ -3,7 +3,7 @@ import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useState, useCallback, useEffect } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
-// import axios from 'axios';
+import axios from 'axios';
 
 const products = [
     { id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые' },
@@ -30,7 +30,8 @@ const ProductList = () => {
     let { tg, query } = useTelegram();
 
     // queryId = 'AAGFPFBsAAAAAIU8UGwpt7GG';
-    const urlBot = 'http://94.26.224.61:8000/web-data';
+    const urlBot = 'http://94.26.224.58/web-data';
+    const urlBot1 = 'http://localhost:8000/web-data';
 
     useEffect(() => { setQueryId(query) }, []);
 
@@ -42,27 +43,23 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         };
+        const requestOptions = {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            body: JSON.stringify(data),
+            redirect: 'follow'
+        };
 
-        try {
-            // await axios({
-            //     method: 'post',
-            //     url: urlBot,
-            //     data: JSON.stringify(data),
-            // });
-
-
-            await fetch('http://94.26.224.61:8000/web-data', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', },
-                body: JSON.stringify(data),
-            }).then(response => {
-                // tg.MainButton.setParams({ text: "response.text", })
-                setErrors(response)
+        await fetch(urlBot, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => {
+                console.log('error', error);
+                setErrors(error);
             });
-        } catch (error) {
-            setErrors(error);
-        }
-
     }, [addedItems]);
 
 
@@ -106,7 +103,6 @@ const ProductList = () => {
                 onChange={onChangeId}
             />
             {errors.message}<br />
-            {console.log(errors)}<br />
             {queryId}<br />
             {products.map(item => (
                 <ProductItem
