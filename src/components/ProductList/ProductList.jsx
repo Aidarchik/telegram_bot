@@ -30,7 +30,7 @@ const ProductList = () => {
     let { tg, query } = useTelegram();
 
     // queryId = 'AAGFPFBsAAAAAIU8UGwpt7GG';
-    const urlBot = 'http://94.26.224.58/web-data';
+    const urlBot = 'https://95.181.164.194:8000/web-data';
     const urlBot1 = 'http://localhost:8000/web-data';
 
     useEffect(() => { setQueryId(query) }, []);
