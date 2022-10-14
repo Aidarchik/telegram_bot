@@ -30,7 +30,7 @@ const ProductList = () => {
     let { tg, query } = useTelegram();
 
     // queryId = 'AAGFPFBsAAAAAIU8UGwpt7GG';
-    const urlBot = 'https://95.181.164.194:8000/web-data';
+    const urlBot = 'https://sushilike159.ru:8443/web-data';
     const urlBot1 = 'http://localhost:8000/web-data';
 
     useEffect(() => { setQueryId(query) }, []);
@@ -47,7 +47,7 @@ const ProductList = () => {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
-            credentials: 'same-origin',
+            // credentials: 'same-origin',
             headers: { "Content-Type": "application/json; charset=utf-8" },
             body: JSON.stringify(data),
             redirect: 'follow'
